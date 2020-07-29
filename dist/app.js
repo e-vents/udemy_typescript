@@ -125,5 +125,16 @@ accounting.addEmployee('Manu');
 // accounting.printReports();
 // accounting.printEmployeeInformation();
 accounting.describe();
-// const accountingCopy = { name: 'DUMMY', describe: accounting.describe };
-// accountingCopy.describe();
+var Person = /** @class */ (function () {
+    function Person(n) {
+        this.name = n;
+    }
+    Person.prototype.greet = function (phrase) {
+        console.log(phrase + ("" + this.name));
+    };
+    return Person;
+}());
+var user1;
+user1 = new Person('Noëlle');
+console.log(typeof (user1));
+user1.greet('Hi there I am: ');

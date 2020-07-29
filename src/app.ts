@@ -129,3 +129,24 @@ accounting.describe();
 // const accountingCopy = { name: 'DUMMY', describe: accounting.describe };
 
 // accountingCopy.describe();
+
+interface Greetable {
+  name: String;
+  greet(phrase: String): void;
+}
+
+class Person implements Greetable {
+  name: String;
+
+  constructor(n: String) {
+    this.name = n;
+  }
+  greet(phrase: String): void {
+    console.log(phrase + `${this.name}`)
+  }
+}
+
+let user1: Greetable;
+user1 = new Person('Noëlle');
+console.log(typeof(user1));
+user1.greet('Hi there I am: ');

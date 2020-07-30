@@ -144,4 +144,5 @@ if (typeof num1 === 'number') {
 }
 else {
 }
+console.log("like you the most");
 //# sourceMappingURL=app.js.map

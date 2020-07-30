@@ -138,3 +138,10 @@ var user1;
 user1 = new Person('Noëlle');
 console.log(typeof (user1));
 user1.greet('Hi there I am: ');
+var num1 = 2;
+if (typeof num1 === 'number') {
+    console.log('hello');
+}
+else {
+}
+//# sourceMappingURL=app.js.map

@@ -150,3 +150,10 @@ let user1: Greetable;
 user1 = new Person('Noëlle');
 console.log(typeof(user1));
 user1.greet('Hi there I am: ');
+
+const num1 = 2;
+if (typeof num1 === 'number') {
+  console.log('hello');
+} else {
+
+}

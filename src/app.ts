@@ -159,3 +159,14 @@ if (typeof num1 === 'number') {
 }
 
 console.log("like you the most");
+
+const names = ['phipu', 5, true];
+if (typeof names[0] === 'string') {
+  names[0].split(' ');
+}
+
+function extractAndConvert<T extends object, U extends keyof T>(obj: T, key: U) {
+  return obj[key];
+}
+
+console.log(extractAndConvert({name: 'steven'}, 'name'));

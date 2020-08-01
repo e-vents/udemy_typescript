@@ -145,4 +145,12 @@ if (typeof num1 === 'number') {
 else {
 }
 console.log("like you the most");
+var names = ['phipu', 5, true];
+if (typeof names[0] === 'string') {
+    names[0].split(' ');
+}
+function extractAndConvert(obj, key) {
+    return obj[key];
+}
+console.log(extractAndConvert({ name: 'steven' }, 'name'));
 //# sourceMappingURL=app.js.map

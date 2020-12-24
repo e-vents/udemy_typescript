@@ -4,11 +4,11 @@ function Autobind(
     methodName: string, 
     descriptor: PropertyDescriptor
 ) { 
-    const originalMehtod = descriptor.value;
+    const originalMethod = descriptor.value;
     const adjDescriptor: PropertyDescriptor =  {
         configurable: true,
         get() {
-            const boundFn = originalMehtod.bind(this);
+            const boundFn = originalMethod.bind(this);
             return boundFn;
         }
     };
@@ -16,7 +16,34 @@ function Autobind(
 }
 
 //Validation
+interface Validatable {
+    value: string | number;
+    required?: boolean;
+    minLength?: number;
+    maxLength?: number;
+    min?: number;
+    max?: number;
+}
 
+function validate(validatableInput: Validatable) {
+    let isValid = true;
+    if (validatableInput.required) {
+        isValid = isValid && validatableInput.value.toString().trim().length !== 0;
+    }
+    if (validatableInput.minLength && typeof validatableInput.value === 'string') {
+        isValid = isValid && validatableInput.value.length > validatableInput.minLength;
+    }
+    if (validatableInput.maxLength && typeof validatableInput.value === 'string') {
+        isValid = isValid && validatableInput.value.length < validatableInput.maxLength;
+    }
+    if (validatableInput.min != null && typeof validatableInput.value === 'number') {
+        isValid = isValid && validatableInput.value > validatableInput.min;
+    }
+    if (validatableInput.max != null && typeof validatableInput.value === 'number') {
+        isValid = isValid && validatableInput.value > validatableInput.max;
+    }
+    return isValid
+}
 
 class ProjectInput {
     templateElement: HTMLTemplateElement;
@@ -47,12 +74,30 @@ class ProjectInput {
         const enteredDescription = this.descriptionInputElement.value;
         const enteredPeople = this.peopleInputElement.value;
 
+        const titleValidatable: Validatable = {
+            value: enteredTitle,
+            required: true
+        };
+
+        const descriptorValidatable: Validatable = {
+            value: enteredDescription,
+            required: true,
+            minLength: 5
+        };
+
+        const peopleValidatable: Validatable = {
+            value: +enteredPeople,
+            required: true,
+            min: 1
+        };
+
         if (
-            validate({value: enteredTitle, required: true, minLength: 5}) &&
-            validate({value: enteredDescription, required: true, minLength: 5})
-            validate({value: enteredPeople, required: true, minLength: 5})
+            !validate(titleValidatable) ||
+            !validate(descriptorValidatable) ||
+            !validate(peopleValidatable)
         ) {
-            alert('invalid input please try again')
+            alert('invalid input please try again');
+            return;
         } else {
             return [enteredTitle, enteredDescription, +enteredPeople];
         }

@@ -1,6 +1,7 @@
 //adding inheritance and generics
 // component analog to a component in angular
-export abstract class Component<T extends HTMLElement, U extends HTMLElement> {
+//default tells typescript that it is the main export of this file
+export default abstract class Component<T extends HTMLElement, U extends HTMLElement> {
     templateElement: HTMLTemplateElement;
     hostElement: T;
     element: U;

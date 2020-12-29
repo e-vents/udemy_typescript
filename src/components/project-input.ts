@@ -1,9 +1,9 @@
 //importing only the default export
-import Component from './base-component.js';
+import Component from './base-component';
 //grouping syntax using an alias
-import * as Validation from  '../util/validation.js' ;
-import { Autobind } from '../decorators/autobind.js';
-import { projectState } from '../state/project.state.js';
+import * as Validation from  '../util/validation' ;
+import { Autobind } from '../decorators/autobind';
+import { projectState } from '../state/project.state';
 
 // Project Input Rendering and User Input handling
 export class ProjectInput extends Component<HTMLDivElement, HTMLFormElement> {
